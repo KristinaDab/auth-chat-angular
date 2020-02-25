@@ -1,0 +1,7 @@
+<div class="feed">
+    <!-- For each message we are going to pass that message to our instance of app-message component
+    via one way binding input binding-->
+    <div *ngFor="let message of feed" class="message">
+        <app-message [chatMessage] = message></app-message>
+    </div>
+</div>

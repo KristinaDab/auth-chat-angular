@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "angular-auth-chat": {
+      "hosting": {
+        "auth-chat-angular": [
+          "angular-auth-chat"
+        ]
+      }
+    }
+  }
+}
