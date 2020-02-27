@@ -24,18 +24,6 @@ export class AuthService {
         private db: AngularFireDatabase,
         private router: Router) { 
           this.user = afAuth.authState;
-           /* Saving user data in localstorage when 
-              logged in and setting up null when logged out */
-          this.afAuth.authState.subscribe(user => {
-            if (user) {
-              this.userData = user;
-              localStorage.setItem('user', JSON.stringify(this.userData));
-              JSON.parse(localStorage.getItem('user'));
-            } else {
-              localStorage.setItem('user', null);
-              JSON.parse(localStorage.getItem('user'));
-            }
-          })
      }
 
     authUser() {
@@ -59,7 +47,6 @@ export class AuthService {
     logout() {
       this.setUserStatus('offline');
       return firebase.auth().signOut().then(() => {
-        localStorage.removeItem('user');
         this.router.navigate(['login']);
       });
       
