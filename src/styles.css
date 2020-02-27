@@ -4,8 +4,9 @@
     height: 100%;
     box-sizing: border-box;
     margin: 0;
-    padding: 0;
+    padding-top: 0;
     border: 0;
+    
 }
 
 body {
@@ -15,6 +16,7 @@ body {
     background-attachment: fixed;
     background-size: cover; 
     font-family: "Open Sans", sans-serif;
+
 }
 
 app-chatroom {
@@ -23,14 +25,14 @@ app-chatroom {
 }
 
 app-navbar{
-    width: 100%;
+    width: 100% ;
 }
 
 app-chat-form{
     width: 100%;
     display: flex;
     white-space: nowrap;
-    overflow: none;
+    /* overflow: none; */
 }
 
 .message {
