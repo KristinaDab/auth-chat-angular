@@ -19,6 +19,8 @@ import { ActivatedRoute } from '@angular/router';
 export class ChatService {
   user: firebase.User;
   userRef: AngularFireObject<any>;
+  usersRef: AngularFireList<any>;
+
   chatMessages: AngularFireList<any>;
   chatMessage: ChatMessage;
   userName: Observable<string>;
@@ -42,18 +44,16 @@ export class ChatService {
 
   }
 
+  // Get user that is currently authenticated
   getUser(id: string) {
     id = this.user.uid;
-    // const path = `/users/${userId}`;
-    // console.log(userId);
-    // return this.db.object(path);
     this.userRef = this.db.object('users/' + id);
     return this.userRef;
   }
 
   getUsers() {
-    const path = '/users';
-    return this.db.list(path);
+    this.usersRef = this.db.list('users');
+    return this.usersRef;
   }
 
   sendMessage(msg: string) {
@@ -73,8 +73,6 @@ export class ChatService {
     return this.db.list('messages', ref => {
       return ref.limitToLast(25).orderByKey()
     });
-    // this.chatMessages= this.db.list('messages');
-    // return this.chatMessages;
   }
 
   getTimeStamp() {
