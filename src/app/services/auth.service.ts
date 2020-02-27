@@ -9,7 +9,6 @@ import 'firebase/database';
 import 'firebase/auth';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -17,16 +16,29 @@ import 'firebase/auth';
 export class AuthService {
   private user: Observable<firebase.User>;
   private authState: any;
-
+  public loggedIn = false;
+  userData: firebase.User;
 
   constructor(
         private afAuth: AngularFireAuth,
         private db: AngularFireDatabase,
         private router: Router) { 
           this.user = afAuth.authState;
+           /* Saving user data in localstorage when 
+              logged in and setting up null when logged out */
+          this.afAuth.authState.subscribe(user => {
+            if (user) {
+              this.userData = user;
+              localStorage.setItem('user', JSON.stringify(this.userData));
+              JSON.parse(localStorage.getItem('user'));
+            } else {
+              localStorage.setItem('user', null);
+              JSON.parse(localStorage.getItem('user'));
+            }
+          })
      }
 
-     authUser() {
+    authUser() {
       return this.user;
     }
 
@@ -45,8 +57,13 @@ export class AuthService {
     }
 
     logout() {
-      firebase.auth().signOut();
-      this.router.navigate(['login']);
+      this.setUserStatus('offline');
+      return firebase.auth().signOut().then(() => {
+        localStorage.removeItem('user');
+        this.router.navigate(['login']);
+      });
+      
+      
     }
 
     signUp(email: string, password: string, displayName: string) {
