@@ -1,5 +1,6 @@
 .messageContainer{
-    display: flex;
+    display: block;
+    word-break: break-word;
     height: auto;
     width: 70%;
     min-width: 400px;
