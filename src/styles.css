@@ -2,17 +2,21 @@
 
 * {
     height: 100%;
-    box-sizing: border-box;
-    margin: 0;
-    padding-top: 0;
-    border: 0;
+    box-sizing: border-box ;
+    margin: 0 ;
+    padding-top: 0 ;
+    border: 0 ;
     
+}
+
+.toast-container * {
+    height: 80px !important;
 }
 
 body {
     width: 100%;
     min-height:100%;
-    background: #eee;
+    background: rgb(255, 255, 255);
     background-attachment: fixed;
     background-size: cover; 
     font-family: "Open Sans", sans-serif;
