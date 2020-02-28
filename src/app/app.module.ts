@@ -24,8 +24,15 @@ import { UserItemComponent } from './user-item/user-item.component';
 
 import { ChatService } from './services/chat.service';
 import { AuthService } from './services/auth.service';
+import { ContactListComponent } from './contact-list/contact-list.component';
+import { AddContactComponent } from './add-contact/add-contact.component';
+import { EditContactComponent } from './edit-contact/edit-contact.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -39,7 +46,10 @@ import { AuthService } from './services/auth.service';
     SignupFormComponent,
     NavbarComponent,
     UserListComponent,
-    UserItemComponent
+    UserItemComponent,
+    ContactListComponent,
+    AddContactComponent,
+    EditContactComponent
 
   ],
   imports: [
@@ -49,7 +59,12 @@ import { AuthService } from './services/auth.service';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     AngularFireAuthModule,
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+
   ],
   providers: [AuthService, ChatService],
   bootstrap: [AppComponent]
