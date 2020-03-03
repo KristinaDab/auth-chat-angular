@@ -16,7 +16,7 @@ import 'firebase/auth';
 export class AuthService {
   private user: Observable<firebase.User>;
   private authState: any;
-  public loggedIn = false;
+  // public loggedIn = false;
   userData: firebase.User;
 
   constructor(
