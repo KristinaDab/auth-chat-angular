@@ -55,7 +55,8 @@ export class EditContactComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(2)]],
       address: [''],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      avatar: ['']
+      avatar: [''],
+      userId: ['']
     })
   }
 
