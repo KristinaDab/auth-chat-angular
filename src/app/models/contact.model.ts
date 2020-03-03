@@ -4,4 +4,5 @@ export interface Contact {
     address: string;
     email: string;
     avatar: string;
+    userId: string;
 }
