@@ -3,6 +3,7 @@ import { ContactsService } from './../services/contacts.service'; // CRUD servic
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'; // Reactive form services
 import { ToastrService } from 'ngx-toastr'; // Alert message using NGX toastr
 import { Location } from '@angular/common';  // Location service is used to go back to previous component
+import { AuthService } from './../services/auth.service';
 
 
 @Component({
@@ -18,7 +19,8 @@ export class AddContactComponent implements OnInit {
     public dbApi: ContactsService,  // CRUD API services
     public fb: FormBuilder,       // Form Builder service for Reactive forms
     private location: Location,         // Location service to go back to previous component
-    public toastr: ToastrService  // Toastr service for alert message
+    public toastr: ToastrService,  // Toastr service for alert message
+    public auth: AuthService
   ) { }
 
  
@@ -33,7 +35,8 @@ export class AddContactComponent implements OnInit {
       name: ['', [Validators.required, Validators.minLength(2)]],
       address: [''],
       email: ['', [Validators.required, Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')]],
-      avatar: ['']
+      avatar: [''],
+      userId: [this.auth.currentUserId]
     })  
   }
 
@@ -54,6 +57,10 @@ export class AddContactComponent implements OnInit {
     return this.contForm.get('avatar');
   }
 
+  get userId() {
+    return this.contForm.get('userId');
+  }
+
   // Reset contact form's values
   ResetForm() {
     this.contForm.reset();
@@ -63,6 +70,7 @@ export class AddContactComponent implements OnInit {
     this.dbApi.AddContact(this.contForm.value); // Submit contact data using db API
     this.toastr.success(this.contForm.controls['name'].value + ' successfully added!'); // Show success message when data is successfully submited
     this.ResetForm();  // Reset form when clicked on reset button
+    console.log(this.auth.currentUserId);
     
    };
 
