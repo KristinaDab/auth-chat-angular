@@ -22,7 +22,8 @@ export class ContactsService {
       name: contact.name,
       address: contact.address,
       email: contact.email,
-      avatar: contact.avatar
+      avatar: contact.avatar,
+      userId: contact.userId
     })
   }
 
