@@ -47,6 +47,15 @@
             <!-- <p *ngIf="avatar.errors?.pattern" class="error"><sup>*</sup>Use numbers only
               number</p> -->
           </div>
+
+          <div class="col-md-12 mb-3">
+            <input type="hidden" formControlName="userId" class="form-control" [value]="this.auth.currentUserId" required>
+            <!-- Showing errors using getter method -->
+            <!-- <p *ngIf="userId.touched && userId.invalid" class="error"><sup>*</sup>Please add your avatar url</p> -->
+            <!-- <p *ngIf="avatar.errors?.pattern" class="error"><sup>*</sup>Use numbers only
+              number</p> -->
+          </div>
+
   
         </div>
   
