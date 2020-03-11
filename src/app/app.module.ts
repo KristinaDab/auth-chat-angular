@@ -29,8 +29,6 @@ import { AddContactComponent } from './add-contact/add-contact.component';
 import { EditContactComponent } from './edit-contact/edit-contact.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgxPaginationModule } from 'ngx-pagination';
-
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -61,7 +59,6 @@ import { ToastrModule } from 'ngx-toastr';
     AngularFireAuthModule,
     AngularFireDatabaseModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
 
