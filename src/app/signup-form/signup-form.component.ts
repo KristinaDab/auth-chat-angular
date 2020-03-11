@@ -17,6 +17,8 @@ export class SignupFormComponent {
 
   constructor(private authService: AuthService, private router: Router) { }
 
+  // Signup method that takes input data and performs sign up method
+  // from AuthService
   signUp() {
     const email = this.email;
     const password = this.password;
