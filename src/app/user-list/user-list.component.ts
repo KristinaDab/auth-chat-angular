@@ -11,6 +11,7 @@ export class UserListComponent implements OnInit {
   users: User[];
 
   constructor(chat: ChatService) {
+    // Using observable to watch the user list for changes
     chat.getUsers().valueChanges().subscribe(users => {
       this.users = users;
     })
