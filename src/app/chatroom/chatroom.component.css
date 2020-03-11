@@ -1,5 +1,7 @@
 .mainContent{
     display: flex;
+    overflow-y: hidden;
+
 }
 
 .userListWrapper {
@@ -17,7 +19,7 @@
 .feedWrapper {
     background-color: #fff;
     background: 
-        linear-gradient(181deg, rgba(100,200,255,0.6), rgba(219, 219, 219, 0.9))
+        linear-gradient(181deg, rgb(139, 222, 243), rgba(219, 219, 219, 0.9))
         /* url('../../assets/img/chat-bg-1.png') center center no-repeat; */;
     font-family: "Open Sans", sans-serif;
     font-size: 1.2em;
