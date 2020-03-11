@@ -1,24 +1,39 @@
-<div class="navBar">
-    <!-- <div id="logo"></div> -->
-    <div id="heading"><a routerLink="/">AuthChatAngular</a></div>
-  <div class="links">
-    <span>
-      <a *ngIf="!(user|async)?.uid" href="#" (click)="login()">Login</a>
-    </span>
-    <span>
-      <a *ngIf="!(user|async)?.uid" routerLink="/signup">Sign Up</a>
-    </span>
-    <span>
-      <span id="userEmail" *ngIf="(user|async)?.uid">Hello, {{userEmail}}</span>
-    </span>
-    <span>
-      <a *ngIf="(user|async)?.uid" routerLink="/chat" routerLinkActive="active">Chat</a>
-    </span>
-    <span>
-      <a *ngIf="(user|async)?.uid" routerLink="/view-contacts" routerLinkActive="active">Contact Book</a>
-    </span>
-    <span>
-      <a *ngIf="(user|async)?.uid" href="#" (click)="logout()">Logout</a>
-    </span>
-  </div>
+<!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+
+<div class="topnav " id="myTopnav">
+
+  <div id="heading"><a routerLink="/">AuthChatAngular</a></div>
+
+  <a class="signup" *ngIf="!(user | async)?.uid" routerLink="/signup"
+    >Sign Up</a
+  >
+  <a class="login" *ngIf="!(user | async)?.uid" href="#" (click)="login()"
+    >Login</a
+  >
+
+  <a *ngIf="(user | async)?.uid" routerLink="/chat" routerLinkActive="active"
+    >Chat</a
+  >
+  
+  <a
+    *ngIf="(user | async)?.uid"
+    routerLink="/view-contacts"
+    routerLinkActive="active"
+    >Contact Book</a
+  >
+
+  <span id="userEmail" *ngIf="(user | async)?.uid">Hello, {{ userEmail }}</span>
+
+
+  <a class="logout" *ngIf="(user | async)?.uid" href="#" (click)="logout()"
+    >Logout</a
+  >
+
+  <a href="javascript:void(0);" class="icon" (click)="myFunction()">
+    <i class="fa fa-bars"></i>
+  </a>
 </div>
