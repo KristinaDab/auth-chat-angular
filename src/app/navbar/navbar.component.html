@@ -4,20 +4,23 @@
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
 
+<!-- Top nav menu with diferent routerLinks -->
 <div class="topnav " id="myTopnav">
 
   <div id="heading"><a routerLink="/">AuthChatAngular</a></div>
 
+  <!-- Using the Async pipe we are cheking if user is logged in or not. 
+        It automatically subscribes and unsubscribes from Observalbes as 
+      the component gets instantiated or destroyed -->
+
   <a class="signup" *ngIf="!(user | async)?.uid" routerLink="/signup"
-    >Sign Up</a
-  >
-  <a class="login" *ngIf="!(user | async)?.uid" href="#" (click)="login()"
-    >Login</a
-  >
+    >Sign Up</a>
+
+  <a class="login" *ngIf="!(user | async)?.uid" routerLink="/login" (click)="login()"
+    >Login</a>
 
   <a *ngIf="(user | async)?.uid" routerLink="/chat" routerLinkActive="active"
-    >Chat</a
-  >
+    >Chat</a>
   
   <a
     *ngIf="(user | async)?.uid"
@@ -29,9 +32,8 @@
   <span id="userEmail" *ngIf="(user | async)?.uid">Hello, {{ userEmail }}</span>
 
 
-  <a class="logout" *ngIf="(user | async)?.uid" href="#" (click)="logout()"
-    >Logout</a
-  >
+  <a class="logout" *ngIf="(user | async)?.uid" routerLink="/login" (click)="logout()"
+    >Logout</a>
 
   <a href="javascript:void(0);" class="icon" (click)="myFunction()">
     <i class="fa fa-bars"></i>
