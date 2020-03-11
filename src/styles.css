@@ -10,6 +10,7 @@
     
 }
 
+/* Change height of the notification container */
 .toast-container * {
     height: 80px !important;
 }
