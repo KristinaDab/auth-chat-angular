@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase/app';
 import { stringify } from 'querystring';
 
+
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
@@ -12,6 +13,7 @@ import { stringify } from 'querystring';
 export class NavbarComponent implements OnInit {
   user: Observable<firebase.User>;
   userEmail: string;
+
 
   constructor(private authService: AuthService) { }
 
@@ -31,6 +33,16 @@ export class NavbarComponent implements OnInit {
 
   login() {
     this.authService.login("email", "password");
+  }
+
+  /* Toggle between adding and removing the "responsive" class to topnav when the user clicks on the icon */
+  myFunction() {
+    var x = document.getElementById("myTopnav");
+    if (x.className === "topnav") {
+      x.className += " responsive";
+    } else {
+      x.className = "topnav";
+    }
   }
 }
 
