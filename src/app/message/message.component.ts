@@ -11,13 +11,18 @@ import { ChatMessage } from './../models/chat-message.model';
 })
 export class MessageComponent implements OnInit {
 
+  // this property is bound to the ChatMessage model:
   @Input() chatMessage: ChatMessage;
+
   userEmail: string;
   userName: string;
   messageContent: string;
   timeStamp: Date = new Date();
   isOwnMessage: boolean;
   ownEmail: string;
+
+  // Watching for changes on users email. Based on current users email
+  // we will identify and change styles later for that users messages
 
   constructor(private authService: AuthService) { 
     authService.authUser().subscribe(user => {
