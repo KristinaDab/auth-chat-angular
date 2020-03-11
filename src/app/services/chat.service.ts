@@ -17,6 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class ChatService {
+
   user: firebase.User;
   userRef: AngularFireObject<any>;
   usersRef: AngularFireList<any>;
@@ -29,13 +30,11 @@ export class ChatService {
   constructor(
     private db: AngularFireDatabase,
     private afAuth: AngularFireAuth,
-    private actRoute: ActivatedRoute, 
-  ) { 
+    private actRoute: ActivatedRoute) { 
     this.afAuth.authState.subscribe(auth => {
       if(auth != undefined && auth !== null) {
         this.user = auth;
       }
-
       const id = this.actRoute.snapshot.paramMap.get('id');
       this.getUser(id).valueChanges().subscribe(a => {
         this.userName = a.displayName;
@@ -51,11 +50,15 @@ export class ChatService {
     return this.userRef;
   }
 
+  // Get the list of users from the database
   getUsers() {
     this.usersRef = this.db.list('users');
     return this.usersRef;
   }
 
+  // Sending message with timestamp,
+  // email (to recognize the sender)
+  // and userName (displayName)
   sendMessage(msg: string) {
     const timestamp = this.getTimeStamp();
     const email = this.user.email;
@@ -68,6 +71,7 @@ export class ChatService {
       console.log('Message sent');
   }
 
+  // Get 25 last messages from the database
   getMessages(): AngularFireList<any> {
     console.log('Calling getMessages()')
     return this.db.list('messages', ref => {
@@ -75,6 +79,7 @@ export class ChatService {
     });
   }
 
+  // Get time stamp with date and time
   getTimeStamp() {
     const now = new Date();
     const date  = now.getUTCFullYear() + '/' + 
