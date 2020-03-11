@@ -17,8 +17,8 @@ export class LoginFormComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  // Login method, refering to login method in AuthService
   login() {
-    console.log('login() called from login-form component');
     this.authService.login(this.email, this.password)
     .catch(error => this.errorMsg = error.message);
   }
