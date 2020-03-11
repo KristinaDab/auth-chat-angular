@@ -24,7 +24,7 @@ export class ContactListComponent implements OnInit {
 
   ngOnInit() {
     this.dataState(); // Initialize contact's list, when component is ready
-    let s = this.dbApi.GetContactsList();
+    let s = this.dbApi.getContactsList();
     s.snapshotChanges().subscribe(data => {
       // Using snapshotChanges() method to retrieve list of data along with metadata($key)
       this.Contact = [];
@@ -39,7 +39,7 @@ export class ContactListComponent implements OnInit {
   // Using valueChanges() method to fetch simple list of contacts data. It updates the state of hideWhenNoContact, noData & preLoader variables when any changes occurs in contact data list in real-time.
   dataState() {
     this.dbApi
-      .GetContactsList()
+      .getContactsList()
       .valueChanges()
       .subscribe(data => {
         this.preLoader = false;
@@ -57,7 +57,7 @@ export class ContactListComponent implements OnInit {
   deleteContact(contact) {
     if (window.confirm("Are sure you want to delete this contact ?")) {
       // Asking from user before Deleting contact data.
-      this.dbApi.DeleteContact(contact.$key); // Using Delete student API to delete contact.
+      this.dbApi.deleteContact(contact.$key); // Using Delete student API to delete contact.
       this.toastr.success(contact.name + " successfully deleted!"); // Alert message will show up when contact successfully deleted.
     }
   }

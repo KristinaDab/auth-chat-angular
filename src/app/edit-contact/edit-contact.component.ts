@@ -27,7 +27,7 @@ export class EditContactComponent implements OnInit {
   ngOnInit() {
     this.updateContactData();   // Call updateContactData() as soon as the component is ready 
     const id = this.actRoute.snapshot.paramMap.get('id');  // Getting current component's id or information using ActivatedRoute service
-    this.dbApi.GetContact(id).valueChanges().subscribe(data => {
+    this.dbApi.getContact(id).valueChanges().subscribe(data => {
       this.editForm.setValue(data)  // Using SetValue() method, It's a ReactiveForm's API to store intial value of reactive form 
     })
   }
@@ -67,7 +67,7 @@ export class EditContactComponent implements OnInit {
 
   // Below methods fire when somebody click on submit button
   updateForm(){
-    this.dbApi.UpdateContact(this.editForm.value);       // Update contact data using DB API
+    this.dbApi.updateContact(this.editForm.value);       // Update contact data using DB API
     this.toastr.success(this.editForm.controls['name'].value + ' updated successfully');   // Show succes message when data is successfully submited
     this.router.navigate(['view-contacts']);               // Navigate to contact's list page when contact data is updated
   }

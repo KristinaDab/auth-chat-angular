@@ -10,14 +10,13 @@ import { Contact } from './../models/contact.model';
 
 export class ContactsService {
 
-  contactsRef : AngularFireList<any>; // Reference to Contact data list, its an Observable
-  contactRef: AngularFireObject<any>;  // Reference to Contact object, its an Observable too
+  contactsRef : AngularFireList<any>; 
+  contactRef: AngularFireObject<any>; 
 
-  // Inject AngularFireDatabase Dependency in Constructor
   constructor(private db: AngularFireDatabase) { }
 
   // Create Contact
-  AddContact(contact: Contact) {
+  addContact(contact: Contact) {
     this.contactsRef.push({
       name: contact.name,
       address: contact.address,
@@ -28,19 +27,19 @@ export class ContactsService {
   }
 
   // Fetch Single Contact Object
-  GetContact(id: string) {
+  getContact(id: string) {
     this.contactRef = this.db.object('contacts-list/' + id);
     return this.contactRef;
   }
 
-  // Fetch Contact List
-  GetContactsList() {
+  // Get Contact List
+  getContactsList() {
     this.contactsRef = this.db.list('contacts-list');
     return this.contactsRef;
   }  
 
   // Update Contact Object
-  UpdateContact(contact: Contact) {
+  updateContact(contact: Contact) {
     this.contactRef.update({
       name: contact.name,
       address: contact.address,
@@ -49,8 +48,8 @@ export class ContactsService {
     })
   }  
 
-  // Delete Student Object
-  DeleteContact(id: string) { 
+  // Delete Contact Object
+  deleteContact(id: string) { 
     this.contactRef = this.db.object('contacts-list/'+id);
     this.contactRef.remove();
   }

@@ -25,7 +25,7 @@ export class AddContactComponent implements OnInit {
 
  
   ngOnInit() {
-    this.dbApi.GetContactsList();  // Call GetSContactsList() before main form is being called
+    this.dbApi.getContactsList();  // Call GetSContactsList() before main form is being called
     this.contactForm();              // Call contact form when component is ready
   }
 
@@ -67,7 +67,7 @@ export class AddContactComponent implements OnInit {
   }  
 
   submitContactData() {
-    this.dbApi.AddContact(this.contForm.value); // Submit contact data using db API
+    this.dbApi.addContact(this.contForm.value); // Submit contact data using db API
     this.toastr.success(this.contForm.controls['name'].value + ' successfully added!'); // Show success message when data is successfully submited
     this.ResetForm();  // Reset form when clicked on reset button
     console.log(this.auth.currentUserId);
