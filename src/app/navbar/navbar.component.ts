@@ -2,7 +2,6 @@ import { Observable } from 'rxjs';
 import { AuthService } from './../services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase/app';
-import { stringify } from 'querystring';
 
 
 @Component({
@@ -17,6 +16,8 @@ export class NavbarComponent implements OnInit {
 
   constructor(private authService: AuthService) { }
 
+  // On initiation geting current user and subscribing to 
+  // current users email so we could display it on the nav menu
   ngOnInit() {
     this.user = this.authService.authUser();
     this.user.subscribe(user => {
@@ -26,11 +27,13 @@ export class NavbarComponent implements OnInit {
     });
   }
 
+  // Logout method accessing logout method in AuthService
   logout() {
     this.authService.logout();
   }
 
 
+  // Login method accessing login method in AuthService
   login() {
     this.authService.login("email", "password");
   }
