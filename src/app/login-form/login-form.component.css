@@ -3,7 +3,7 @@
     height: 100%;
     overflow:hidden;
     background: 
-      linear-gradient(45deg, rgba(255,103,0,0.3), rgba(0, 0, 80, 0.9));
+      linear-gradient(45deg, rgba(0, 225, 255, 0.5), rgba(1, 1, 66, 0.9));
       /* url('../../assets/img/login-5.png') center center no-repeat;; */
   }
   
