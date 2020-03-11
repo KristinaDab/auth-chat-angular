@@ -14,17 +14,14 @@ import { ChatService } from './../services/chat.service';
 export class FeedComponent implements OnInit {
   
   feed: ChatMessage[];
-  hideWhenNoContact: boolean = false; // Hide contacts data table when no student.
-  noData: boolean = false;            // Showing No Contact Message, when no contact in database.
-  // preLoader: boolean = true;          // Showing Preloader to show user data is coming for you from thre server(A tiny UX Shit)
-  
 
   constructor(private chat: ChatService) { }
 
   ngOnInit() {
-    this.dataState(); // Initialize contact's list, when component is ready
-    let s = this.chat.getMessages(); 
-    s.snapshotChanges().subscribe(data => { // Using snapshotChanges() method to retrieve list of data along with metadata($key)
+    let messages = this.chat.getMessages(); 
+    // Using snapshotChanges() method to retrieve 
+    // list of data along with metadata($key):
+    messages.snapshotChanges().subscribe(data => { 
       this.feed = [];
       data.forEach(item => {
         let a = item.payload.toJSON(); 
@@ -34,17 +31,5 @@ export class FeedComponent implements OnInit {
     })
   }
 
-  dataState() {     
-    this.chat.getMessages().valueChanges().subscribe(data => {
-      // this.preLoader = false;
-      if(data.length <= 0){
-        this.hideWhenNoContact = false;
-        this.noData = true;
-      } else {
-        this.hideWhenNoContact = true;
-        this.noData = false;
-      }
-    })
-  }
 
 }
