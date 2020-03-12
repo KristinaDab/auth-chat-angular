@@ -10,16 +10,18 @@ export class ChatFormComponent implements OnInit {
 
   message:string;
 
-  constructor(private chat: ChatService) { }
+  constructor(private chatService: ChatService) { }
 
   ngOnInit(): void {
   }
 
+  // Send a message through ChatService sendMessage method
   send() {
-    this.chat.sendMessage(this.message);
+    this.chatService.sendMessage(this.message);
     this.message = '';
   }
 
+  // On enter (key 13) also activate send() method
   handleSubmit(event) {
     if (event.keyCode === 13) {
       this.send();
