@@ -19,8 +19,7 @@
             <label>Name</label>
             <input type="text" formControlName="name" class="form-control" required>
             <!-- Showing errors using getter method -->
-            <p *ngIf="name.touched && name.invalid" class="error"><sup>*</sup>Please enter your full name</p>
-            <p *ngIf="name.errors?.minlength" class="error"><sup>*</sup>Name shouldn't be less than 2 caracters</p>
+            <p *ngIf="name.touched && name.invalid" class="error"><sup>*</sup>Please enter contact's name</p>
           </div>
   
           <div class="col-md-12 mb-3">
@@ -44,19 +43,13 @@
             <input type="text" formControlName="avatar" class="form-control" required>
             <!-- Showing errors using getter method -->
             <p *ngIf="avatar.touched && avatar.invalid" class="error"><sup>*</sup>Please add your avatar url</p>
-            <!-- <p *ngIf="avatar.errors?.pattern" class="error"><sup>*</sup>Use numbers only
-              number</p> -->
           </div>
 
+          <!-- Adding hidden users id to identify what user has created the contact -->
           <div class="col-md-12 mb-3">
             <input type="hidden" formControlName="userId" class="form-control" [value]="this.auth.currentUserId" required>
-            <!-- Showing errors using getter method -->
-            <!-- <p *ngIf="userId.touched && userId.invalid" class="error"><sup>*</sup>Please add your avatar url</p> -->
-            <!-- <p *ngIf="avatar.errors?.pattern" class="error"><sup>*</sup>Use numbers only
-              number</p> -->
           </div>
 
-  
         </div>
   
         <div class="form-group text-right">
@@ -66,5 +59,6 @@
   
       </div>
     </div>
-  </form><!-- Contact form ends-->
+  </form>
+  <!-- Contact form ends-->
 </div>
