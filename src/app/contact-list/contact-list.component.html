@@ -45,13 +45,9 @@
         </thead>
         <tbody>
           <!-- *ngFor loop iterates over Contact array and fetch the contact's data -->
-          <ng-container
-            *ngFor=" let contact of Contact ; 
-            let i = index">
-
+          <ng-container *ngFor="let contact of Contact; let i = index">
             <!-- Show only current logged in users contacts -->
             <tr *ngIf="contact.userId === auth.currentUserId">
-              <!-- <th scope="row">{{contact.$key}}</th> -->
               <td>{{ contact.name }}</td>
               <td>{{ contact.email }}</td>
               <td>{{ contact.address }}</td>
@@ -60,12 +56,12 @@
                   src="{{ contact.avatar }}"
                   class="nodata-msg image"
                   alt="avatar"
-                
                 />
               </td>
               <td class="text-center action-block">
-                
-                <!-- routerLink="/edit-contact/{{contact.$key}}" is refered to { path: 'edit-contact/:id', component: EditContactComponent } in app-routing.moudles.ts -->
+                <!-- routerLink="/edit-contact/{{contact.$key}}" is refered to 
+                  { path: 'edit-contact/:id', component: EditContactComponent } 
+                  in app-routing.moudles.ts -->
                 <i
                   class="far fa-edit fa-lg gap"
                   routerLink="/edit-contact/{{ contact.$key }}"
@@ -79,4 +75,6 @@
           </ng-container>
         </tbody>
       </table>
+    </div>
+  </div>
 </div>
