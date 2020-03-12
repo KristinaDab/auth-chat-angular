@@ -17,7 +17,7 @@ export class ChatroomComponent implements OnInit, AfterViewChecked {
   ngOnInit(): void {
   }
 
-  // This method will be called after ngAfterViewChecked() method
+  // scrollToBottom() method will be called after ngAfterViewChecked() method
   // and will scroll to the bottom of messages, so we can see the newest
 
   scrollToBottom() : void {
