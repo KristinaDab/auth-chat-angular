@@ -7,7 +7,7 @@
 <!-- Top nav menu with diferent routerLinks -->
 <div class="topnav " id="myTopnav">
 
-  <div id="heading"><a routerLink="/">AuthChatAngular</a></div>
+  <div id="heading"><a routerLink="/">Chat&Contacts App</a></div>
 
   <!-- Using the Async pipe we are cheking if user is logged in or not. 
         It automatically subscribes and unsubscribes from Observalbes as 
@@ -16,7 +16,7 @@
   <a class="signup" *ngIf="!(user | async)?.uid" routerLink="/signup"
     >Sign Up</a>
 
-  <a class="login" *ngIf="!(user | async)?.uid" routerLink="/login" (click)="login()"
+  <a class="login" *ngIf="!(user | async)?.uid" href="#" (click)="login()"
     >Login</a>
 
   <a *ngIf="(user | async)?.uid" routerLink="/chat" routerLinkActive="active"
@@ -32,7 +32,7 @@
   <span id="userEmail" *ngIf="(user | async)?.uid">Hello, {{ userEmail }}</span>
 
 
-  <a class="logout" *ngIf="(user | async)?.uid" routerLink="/login" (click)="logout()"
+  <a class="logout" *ngIf="(user | async)?.uid" href="#" (click)="logout()"
     >Logout</a>
 
   <a href="javascript:void(0);" class="icon" (click)="myFunction()">

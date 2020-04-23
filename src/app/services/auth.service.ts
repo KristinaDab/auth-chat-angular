@@ -14,7 +14,6 @@ import 'firebase/auth';
 })
 
 export class AuthService {
-
   private user: Observable<firebase.User>;
   private authState: any;
   userData: firebase.User;

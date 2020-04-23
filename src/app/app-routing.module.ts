@@ -19,9 +19,10 @@ const routes: Routes = [
   {path: 'signup', component: SignupFormComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToChat }},
   {path: 'login', component: LoginFormComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectLoggedInToChat }},
   {path: 'chat', component: ChatroomComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin}},
-  {path: 'register-contact', component: AddContactComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin} },
   {path: 'view-contacts', component: ContactListComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin} },
-  {path: 'edit-contact/:id', component: EditContactComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin} }
+  {path: 'view-contacts/register-contact', component: AddContactComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin} },
+  {path: 'view-contacts/edit-contact/:id', component: EditContactComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin} }
+  
 ];
 
 @NgModule({

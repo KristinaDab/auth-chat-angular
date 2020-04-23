@@ -5,7 +5,7 @@
     <h1 class="h2">Contact List</h1>
     <!-- It won't show if there is no contact data -->
     <a
-      routerLink="/register-contact"
+      routerLink="/view-contacts/register-contact"
       class="btn btn-success"
       *ngIf="hideWhenNoContact"
     >
@@ -23,7 +23,7 @@
     <!-- No data shows when their is no contact data available -->
     <div class="no-data text-center" *ngIf="noData">
       <p class="nodata-msg">No contact added yet!</p>
-      <a routerLink="/register-contact" class="btn btn-success">
+      <a routerLink="/view-contacts/register-contact" class="btn btn-success">
         <i class="fas fa-plus custom-fa-plus"></i>
         Add Contact
       </a>
@@ -45,7 +45,7 @@
         </thead>
         <tbody>
           <!-- *ngFor loop iterates over Contact array and fetch the contact's data -->
-          <ng-container *ngFor="let contact of Contact; let i = index">
+          <ng-container *ngFor="let contact of Contact">
             <!-- Show only current logged in users contacts -->
             <tr *ngIf="contact.userId === auth.currentUserId">
               <td>{{ contact.name }}</td>
@@ -64,7 +64,7 @@
                   in app-routing.moudles.ts -->
                 <i
                   class="far fa-edit fa-lg gap"
-                  routerLink="/edit-contact/{{ contact.$key }}"
+                  routerLink="/view-contacts/edit-contact/{{ contact.$key }}"
                 ></i>
                 <i
                   class="far fa-trash-alt fa-lg gap"

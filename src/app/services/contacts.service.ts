@@ -10,8 +10,8 @@ import { Contact } from './../models/contact.model';
 
 export class ContactsService {
 
-  contactsRef : AngularFireList<any>; 
-  contactRef: AngularFireObject<any>; 
+  contactsRef : AngularFireList<any>; //Reference to Contact data list, it's an Observable
+  contactRef: AngularFireObject<any>; // Reference to Contact Object, it's an Observable
 
   constructor(private db: AngularFireDatabase) { }
 
